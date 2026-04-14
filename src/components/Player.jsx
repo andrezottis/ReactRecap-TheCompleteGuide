@@ -3,13 +3,13 @@ import { useState } from "react";
 export default function Player({ name, symbol }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  function handleEditClick (){
-    setIsEditing(!isEditing);
+  function handleEditClick() {
+    setIsEditing((editing) => !editing);
   }
 
   let playerName = <span className="player-name">{name}</span>;
-  if(isEditing){
-    playerName= <input type="text" required  value={name}/>;
+  if (isEditing) {
+    playerName = <input type="text" required value={name} />;
   }
 
   return (
@@ -18,7 +18,7 @@ export default function Player({ name, symbol }) {
         {playerName}
         <span className="player-symnbol">{symbol}</span>
       </span>
-      <button onClick={handleEditClick}>{isEditing ? 'Save' : 'Edit'}</button>
+      <button onClick={handleEditClick}>{isEditing ? "Save" : "Edit"}</button>
     </li>
   );
 }
