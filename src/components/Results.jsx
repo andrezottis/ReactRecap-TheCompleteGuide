@@ -33,7 +33,7 @@ export default function Results({ userInputOnComp }) {
                 <td>{formatter.format(yearData.valueEndOfYear)}</td>
                 <td>{formatter.format(yearData.interest)}</td>
                 <td>{formatter.format(totalInterest)}</td>
-                <td>{formatter.format(totalAmountInvestedF)}</td>
+                <td>{formatter.format(totalAmountInvested)}</td>
               </tr>
             );
           })}
