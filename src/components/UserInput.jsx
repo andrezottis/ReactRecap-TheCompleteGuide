@@ -40,9 +40,9 @@ export default function userInputOnComp({ onChange, userInputOnComp }) {
           <input
             type="number"
             required
-            value={userInputOnComp.investmentDuration}
+            value={userInputOnComp.duration}
             onChange={(event) =>
-              onChange("investmentDuration", event.target.value)
+              onChange("duration", event.target.value)
             }
           />
         </p>

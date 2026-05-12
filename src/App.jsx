@@ -8,14 +8,14 @@ function App() {
     initialInvestment: 10000,
     annualInvestment: 1200,
     expectedReturn: 6,
-    investmentDuration: 10,
+    duration: 10,
   });
 
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputIdentifier]: newValue,
+        [inputIdentifier]: +newValue,
       };
     });
   }
