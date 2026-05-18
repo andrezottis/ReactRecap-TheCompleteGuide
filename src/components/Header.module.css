@@ -21,7 +21,7 @@ header h1 {
   text-align: center;
   text-transform: uppercase;
   color: #9a3412;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   margin: 0;
 }
 
@@ -29,6 +29,11 @@ header p {
   text-align: center;
   color: #a39191;
   margin: 0;
+}
+
+.paragraph {
+  color: "red";
+  text-align: "left";
 }
 
 @media (min-width: 768px) {
