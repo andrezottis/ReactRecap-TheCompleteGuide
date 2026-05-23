@@ -8,7 +8,7 @@ export default function Header() {
         alt="A canvas"
         className="mb-8 w-44 h-44 object-contain"
       />
-      <h1 className="text-4xl font-semibold tracking-widest text-center uppercase text-amber-800">
+      <h1 className="text-4xl font-semibold tracking-widest text-center uppercase text-amber-800 font-titulo">
         ReactArt
       </h1>
       <p>A community of artists and art-lovers.</p>
