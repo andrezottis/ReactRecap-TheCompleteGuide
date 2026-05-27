@@ -7,6 +7,7 @@ export default function Player() {
 
   function handleCLick() {
     setEnteredPlayerName(playerName.current.value);
+    playerName.current.value='';
   }
 
   return (
