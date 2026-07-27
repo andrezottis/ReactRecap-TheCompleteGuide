@@ -2,6 +2,7 @@ import Places from "./Places.jsx";
 import { useState, useEffect } from "react";
 
 export default function AvailablePlaces({ onSelectPlace }) {
+  const [isFetching, setIsFetching] = useState(false);
   const [availablePlaces, setAvailablePlaces] = useState([]);
 
   useEffect(() => {
@@ -11,13 +12,16 @@ export default function AvailablePlaces({ onSelectPlace }) {
       setAvailablePlaces(resData.places);
     }
 
-    fetchPlaces();
+    setIsFetching(true);
+    fetchPlaces().finally(() => setIsFetching(false));
   }, []);
 
   return (
     <Places
       title="Available Places"
       places={availablePlaces}
+      isLoading={isFetching}
+      loadingText="Loading available places..."
       fallbackText="No places available."
       onSelectPlace={onSelectPlace}
     />
