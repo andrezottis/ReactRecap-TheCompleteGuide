@@ -6,11 +6,13 @@ import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import AvailablePlaces from "./components/AvailablePlaces.jsx";
 import { updateUserPlaces } from "./http.js";
+import ErrorPage from "./components/ErrorPage.jsx";
 
 function App() {
   const selectedPlace = useRef();
 
   const [userPlaces, setUserPlaces] = useState([]);
+  const [errorUpdatetingPlaces, setErrorUpdatetingPlaces] = useState();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState();
@@ -52,12 +54,25 @@ function App() {
     setModalIsOpen(false);
   }, []);
 
-  if (error) {
-    return <ErrorPage title="An error occurred!" message={error.message} />;
+  function handleError() {
+    setError(null);
   }
+
+  // if (error) {
+  //   return <ErrorPage title="An error occurred!" message={error.message} />;
+  // }
 
   return (
     <>
+      <Modal open={error} onClose={handleError}>
+        {error && (
+          <ErrorPage
+            title="An error occurred!"
+            message={error.message}
+            onConfirm={handleError}
+          />
+        )}
+      </Modal>
       <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
