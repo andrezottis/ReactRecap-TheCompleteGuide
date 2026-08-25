@@ -43,6 +43,7 @@ function App() {
       setError({
         message: error.message || "Failed while fetching user data. Try again.",
       });
+      setUserPlaces(userPlaces);
     }
   }
 
