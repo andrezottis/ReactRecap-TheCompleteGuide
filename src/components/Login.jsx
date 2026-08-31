@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 export default function Login() {
-  const [enteredValues, setEnteredValues] = useState({
-    email: "",
-    password: "",
-  });
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log({ enteredValues });
-  }
-
-  function handleInputChange(identifier, value) {
-    setEnteredValues((prevValues) => ({
-      ...prevValues,
-      [identifier]: value,
-    }));
+    console.log({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
   }
 
   return (
@@ -25,13 +19,7 @@ export default function Login() {
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            onChange={(event) => handleInputChange("email", event.target.value)}
-            value={enteredValues.email}
-          />
+          <input id="email" type="email" name="email" ref={emailRef} />
         </div>
 
         <div className="control no-margin">
@@ -40,10 +28,7 @@ export default function Login() {
             id="password"
             type="password"
             name="password"
-            onChange={(event) =>
-              handleInputChange("password", event.target.value)
-            }
-            value={enteredValues.password}
+            ref={passwordRef}
           />
         </div>
       </div>
@@ -52,12 +37,10 @@ export default function Login() {
         <button
           type="button"
           className="button button-flat"
-          onClick={() =>
-            setEnteredValues({
-              email: "",
-              password: "",
-            })
-          }
+          onClick={() => {
+            emailRef.current.value = "";
+            passwordRef.current.value = "";
+          }}
         >
           Reset
         </button>
