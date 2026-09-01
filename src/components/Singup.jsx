@@ -1,5 +1,11 @@
-function handleSubmit(event){
-    event.preventDefault();
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const formDataObj = new FormData(event.target);
+  const acquisitionChannel = formDataObj.getAll("acquisition");
+  const data = Object.fromEntries(formDataObj.entries());
+  data.acquisition = acquisitionChannel;
+  console.log(data);
 }
 
 export default function Signup() {
