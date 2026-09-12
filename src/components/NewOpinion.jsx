@@ -81,7 +81,7 @@ export function NewOpinion() {
         {formState.errors &
         (
           <ul className="errors">
-            {formState.errors.map((error) => (
+            {formState.errors && formState.errors.map((error) => (
               <li key={error}>{error}</li>
             ))}
           </ul>
