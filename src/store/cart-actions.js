@@ -74,16 +74,5 @@ export const sendCartData = (cartData) => {
         }),
       );
     }
-
-    if (!response.ok) {
-      throw new Error("sending cart data failed.");
-    }
-    dispatch(
-      uiActions.showNotification({
-        status: "success",
-        title: "Success",
-        message: "sending cart data completed.",
-      }),
-    );
   };
 };
