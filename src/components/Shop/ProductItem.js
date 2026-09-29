@@ -38,7 +38,7 @@ const ProductItem = (props) => {
       items: updatedItems,
     };
 
-    dispatch(cartActions.replaceCart(newCart));
+    dispatch(cartActions.addItemToCart(newCart));
 
     // and then send Http request
     // fetch('firebase-url', { method: 'POST', body: JSON.stringify(newCart) })
