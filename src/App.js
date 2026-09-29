@@ -3,8 +3,8 @@ import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useSelector, useDispatch } from "react-redux";
-import { uiActions } from "./store/ui-slice";
 import Notification from "./components/UI/Notification";
+import { sendCartData } from "./store/cart-slice";
 
 let isInitial = true;
 
@@ -15,46 +15,12 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
-    const sendCartData = async () => {
-      dispatch(
-        uiActions.showNotification({
-          status: "pending",
-          title: "sending",
-          message: "sending cart data.",
-        }),
-      );
-      const response = await fetch("URL DATABASE", {
-        method: "PUT",
-        body: JSON.stringify(cart),
-      }).then();
-
-      if (!response.ok) {
-        throw new Error("sending cart data failed.");
-      }
-
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success",
-          message: "sending cart data completed.",
-        }),
-      );
-    };
-
     if (isInitial) {
       isInitial = false;
       return;
     }
 
-    sendCartData().catch((error) => {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error",
-          message: "sending cart data completed failed.",
-        }),
-      );
-    });
+    dispatch(sendCartData(cart)); 
   }, [cart, dispatch]);
 
   return (
