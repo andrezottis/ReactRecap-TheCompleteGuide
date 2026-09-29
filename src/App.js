@@ -12,6 +12,7 @@ function App() {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
+  // Assuming you have a 'changed' property in your cart slice to track changes
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
@@ -24,7 +25,9 @@ function App() {
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
 
   return (

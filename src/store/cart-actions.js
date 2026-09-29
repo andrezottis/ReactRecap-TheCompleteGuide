@@ -45,7 +45,10 @@ export const sendCartData = (cartData) => {
     const sendRequest = async () => {
       const response = await fetch("URL DATABASE", {
         method: "PUT",
-        body: JSON.stringify(cartData),
+        body: JSON.stringify({
+          items: cartData.items,
+          totalQuantity: cartData.totalQuantity,
+        }),
       });
 
       if (!response.ok) {
